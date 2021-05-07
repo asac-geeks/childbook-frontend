@@ -1,5 +1,6 @@
 package com.javamaster.controller;
 
+import com.javamaster.model.AxisModel;
 import com.javamaster.model.MessageModel;
 import com.javamaster.storage.UserStorage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,6 @@ public class MessageController {
             simpMessagingTemplate.convertAndSend("/topic/messages/" + to, message);
         }
     }
+
+
 }
