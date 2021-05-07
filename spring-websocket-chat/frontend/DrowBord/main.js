@@ -27,6 +27,13 @@ function start(event) {
   event.preventDefault();
 }
 
+
+function startPoint(data) {
+  is_drawing = true;
+  context.beginPath();
+  context.moveTo(Number(data.x),Number(data.y));
+}
+
 const url = 'http://localhost:8080';
 let stompClient;
 let selectedUser;
@@ -37,10 +44,13 @@ function connectToBord(userName) {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log("connected to: " + frame);
-        stompClient.subscribe("/topic/drow/" + userName, function (response) {
+        stompClient.subscribe("/topic/messages/" + userName, function (response) {
             let data = JSON.parse(response.body);
             console.log(data);
-            console.log("data");
+            console.log(data);;
+            startPoint(data);
+            drawPoints(data);
+            stopPoint();
             // if (selectedUser === data.fromLogin) {
             //     render(data.message, data.fromLogin);
             // } else {
@@ -59,8 +69,10 @@ function draw(event) {
     context.lineCap = "round";
     context.lineJoin = "round";
     stompClient.send("/app/bord/"+to , {}, JSON.stringify({
-      x: String(getX(event)),
-      y:String(getY(event))
+      x: getX(event),
+      y: getY(event),
+      stroke_width: stroke_width,
+      stroke_color:stroke_color
   }));
     // socket.on('mouse',
     // function (data){
@@ -74,33 +86,20 @@ function draw(event) {
   
   event.preventDefault();
 }
-document.getElementById("username-form").addEventListener("click", function(e){
+document.getElementById("username-form").addEventListener("submit", function(e){
     e.preventDefault();
     connectToBord(document.getElementById("username").value);
     to = document.getElementById("to").value
 });
-function drawPoints(event) {
+function drawPoints(data) {
   if (is_drawing) {
-    context.lineTo(getX(event), getY(event));
-    context.strokeStyle = stroke_color;
-    context.lineWidth = stroke_width;
+    context.lineTo(Number(data.x),Number(data.y));
+    context.strokeStyle = data.stroke_color;
+    context.lineWidth = data.stroke_width;
     context.lineCap = "round";
     context.lineJoin = "round";
-    stompClient.send("/app/bord/"+to , {}, JSON.stringify({
-      x: String(getX(event)),
-      y:String(getY(event))
-  }));
-    // socket.on('mouse',
-    // function (data){
-    //   console.log("hi");
-    //   fill(0,0,255);
-    //   noStorcke();
-    //   ellipse(data.x,data.y,80,80)
-    // }
-    // )
   }
   
-  event.preventDefault();
 }
 
 function stop(event) {
@@ -114,6 +113,15 @@ function stop(event) {
   start_index += 1;
 }
 
+function stopPoint() {
+  if (is_drawing) {
+    context.stroke();
+    context.closePath();
+    is_drawing = false;
+  }
+  restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
+  start_index += 1;
+}
 function getX(event) {
   if (event.pageX == undefined) {return event.targetTouches[0].pageX - canvas.offsetLeft}
   else {return event.pageX - canvas.offsetLeft}
