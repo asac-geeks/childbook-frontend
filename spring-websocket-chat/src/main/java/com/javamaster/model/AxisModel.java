@@ -5,6 +5,7 @@ public class AxisModel {
     private String y;
     private String stroke_color;
     private String stroke_width;
+    private String event;
 
     public String getX() {
         return this.x;
@@ -38,11 +39,22 @@ public class AxisModel {
         this.stroke_width = stroke_width;
     }
 
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
     @Override
     public String toString() {
         return "AxisModel{" +
                 "x='" + x + '\'' +
                 ", y='" + y + '\'' +
+                ", stroke_color='" + stroke_color + '\'' +
+                ", stroke_width='" + stroke_width + '\'' +
+                ", event='" + event + '\'' +
                 '}';
     }
 }

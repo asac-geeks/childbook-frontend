@@ -5,6 +5,7 @@ let context = canvas.getContext("2d");
 context.fillStyle = "white";
 var socket;
 var to;
+var userName;
 context.fillRect(0, 0, canvas.width, canvas.height);
 let restore_array = [];
 let start_index = -1;
@@ -21,10 +22,21 @@ function change_width(element) {
 }
 
 function start(event) {
-  is_drawing = true;
-  context.beginPath();
-  context.moveTo(getX(event), getY(event));
-  event.preventDefault();
+   is_drawing = true;
+    context.beginPath();
+    context.moveTo(getX(event), getY(event));
+      if(userName){
+
+        stompClient.send("/app/bord/"+to , {}, JSON.stringify({
+          x: getX(event),
+          y: getY(event),
+          stroke_width: stroke_width,
+          stroke_color:stroke_color,
+          event:"start"
+      }));
+      }
+    event.preventDefault();
+
 }
 
 
@@ -32,6 +44,7 @@ function startPoint(data) {
   is_drawing = true;
   context.beginPath();
   context.moveTo(Number(data.x),Number(data.y));
+
 }
 
 const url = 'http://localhost:8080';
@@ -47,48 +60,43 @@ function connectToBord(userName) {
         stompClient.subscribe("/topic/messages/" + userName, function (response) {
             let data = JSON.parse(response.body);
             console.log(data);
-            console.log(data);;
-            startPoint(data);
-            drawPoints(data);
-            stopPoint();
-            // if (selectedUser === data.fromLogin) {
-            //     render(data.message, data.fromLogin);
-            // } else {
-            //     newMessages.set(data.fromLogin, data.message);
-            //     $('#userNameAppender_' + data.fromLogin).append('<span id="newMessage_' + data.fromLogin + '" style="color: red">+1</span>');
-            // }
+            console.log(data);
+            if(data.event == "start"){
+                startPoint(data);
+            }else if(data.event == "draw"){
+                drawPoints(data);
+            }else if(data.event == "stop"){
+                stopPoint();
+            }
         });
     });
 }
 
 function draw(event) {
-  if (is_drawing) {
+  if (is_drawing ) {
     context.lineTo(getX(event), getY(event));
     context.strokeStyle = stroke_color;
     context.lineWidth = stroke_width;
     context.lineCap = "round";
     context.lineJoin = "round";
-    stompClient.send("/app/bord/"+to , {}, JSON.stringify({
-      x: getX(event),
-      y: getY(event),
-      stroke_width: stroke_width,
-      stroke_color:stroke_color
-  }));
-    // socket.on('mouse',
-    // function (data){
-    //   console.log("hi");
-    //   fill(0,0,255);
-    //   noStorcke();
-    //   ellipse(data.x,data.y,80,80)
-    // }
-    // )
+    if(userName){
+        stompClient.send("/app/bord/"+to , {}, JSON.stringify({
+          x: getX(event),
+          y: getY(event),
+          stroke_width: stroke_width,
+          stroke_color:stroke_color,
+          event:"draw"
+      }));
+    }
+
   }
   
   event.preventDefault();
 }
 document.getElementById("username-form").addEventListener("submit", function(e){
     e.preventDefault();
-    connectToBord(document.getElementById("username").value);
+    userName = document.getElementById("username").value;
+    connectToBord(userName);
     to = document.getElementById("to").value
 });
 function drawPoints(data) {
@@ -111,7 +119,17 @@ function stop(event) {
   event.preventDefault();
   restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
   start_index += 1;
-}
+    if(userName){
+
+      stompClient.send("/app/bord/"+to , {}, JSON.stringify({
+        x: 0,
+        y: 0,
+        stroke_width: stroke_width,
+        stroke_color:stroke_color,
+        event:"stop"
+    }));
+    }
+    }
 
 function stopPoint() {
   if (is_drawing) {
