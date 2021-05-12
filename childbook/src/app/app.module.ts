@@ -10,8 +10,12 @@ import { ParentDetailsComponent } from './components/parent-details/parent-detai
 import { ParentMapComponent } from './components/parent-map/parent-map.component';
 import { ParentEditComponent } from './components/parent-edit/parent-edit.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { ParentLoginComponent } from './components/parent-login/parent-login.component';
+import { VerificationComponent } from './components/verification/verification.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,16 +24,21 @@ import { HttpClientModule } from '@angular/common/http';
     ParentProfileComponent,
     ParentDetailsComponent,
     ParentMapComponent,
-    ParentEditComponent
+    ParentEditComponent,
+     SignupComponent,
+    LoginComponent,
+    ParentLoginComponent,
+    VerificationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
