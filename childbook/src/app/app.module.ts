@@ -9,11 +9,11 @@ import { ParentProfileComponent } from './components/parent-profile/parent-profi
 import { ParentDetailsComponent } from './components/parent-details/parent-details.component';
 import { ParentMapComponent } from './components/parent-map/parent-map.component';
 import { ParentEditComponent } from './components/parent-edit/parent-edit.component';
+import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ParentLoginComponent } from './components/parent-login/parent-login.component';
 import { VerificationComponent } from './components/verification/verification.component';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
