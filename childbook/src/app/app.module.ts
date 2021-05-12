@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ParentProfileComponent } from './components/parent-profile/parent-profile.component';
+import { ParentDetailsComponent } from './components/parent-details/parent-details.component';
+import { ParentMapComponent } from './components/parent-map/parent-map.component';
+import { ParentEditComponent } from './components/parent-edit/parent-edit.component';
+import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ParentLoginComponent } from './components/parent-login/parent-login.component';
@@ -18,13 +22,23 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     ParentProfileComponent,
-    SignupComponent,
+    ParentDetailsComponent,
+    ParentMapComponent,
+    ParentEditComponent,
+     SignupComponent,
     LoginComponent,
     ParentLoginComponent,
     VerificationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
-  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+  ],
+  providers: [
+    HttpClientModule
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

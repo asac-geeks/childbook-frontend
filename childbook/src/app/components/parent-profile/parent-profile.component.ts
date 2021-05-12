@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetParentDataService } from 'src/app/services/get-parent-data.service';
 
 @Component({
   selector: 'app-parent-profile',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getParent: GetParentDataService) { }
 
   ngOnInit(): void {
+    this.getParent.getParentData()
+    .subscribe(data => {
+      console.log(data);
+    });
   }
 
 }
