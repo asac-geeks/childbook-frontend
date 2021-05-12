@@ -5,7 +5,7 @@ import { ParentProfileComponent } from './components/parent-profile/parent-profi
 
 const routes: Routes = [
   {path: "home", component:HomeComponent},
-  {path: "parentProfile", component:ParentProfileComponent}
+  {path: "parentProfile", component:ParentProfileComponent},
 ];
 
 @NgModule({
