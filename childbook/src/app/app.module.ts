@@ -14,7 +14,6 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ParentLoginComponent } from './components/parent-login/parent-login.component';
 import { VerificationComponent } from './components/verification/verification.component';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
