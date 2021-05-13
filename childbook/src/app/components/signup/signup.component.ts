@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignupComponent implements OnInit {
   constructor(private http: HttpClient) {}
   onSubmit(data) {
-    this.http.post('http://localhost:1111/signup', data).subscribe((result) => {
+    this.http.post('http://localhost:7789/signup', data).subscribe((result) => {
       console.warn('result', result);
     });
     console.warn(data);

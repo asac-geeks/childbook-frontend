@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerificationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  onSubmit(data){
+    console.warn(data);
+    this.http.post('http://localhost:7789/parentverification',data).subscribe((result)=>{
+      console.warn("result",result);
+    })
+  }
 
   ngOnInit(): void {
   }
