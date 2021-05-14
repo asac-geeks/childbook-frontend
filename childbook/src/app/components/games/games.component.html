@@ -1,0 +1,3 @@
+<p>Games List!</p>
+<app-search-category-games (category)="searchedCategory($event)"></app-search-category-games>
+<app-game-item *ngFor="let item of itemsList" [item]="item"></app-game-item>

@@ -1,0 +1,5 @@
+<p>Find your Favourite Games Category</p>
+<form #searchForm="ngForm" (ngSubmit)="searchedCategory(searchForm.value)" >
+  <input type="text" class="form-control" placeholder="Search" ngModel name='category'>
+  <button type="submit" class="btn btn-dark">Search</button>
+</form>
