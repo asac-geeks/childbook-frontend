@@ -1,0 +1,28 @@
+<!-- <article class="card" style="width: 18rem;">
+  <img [src]="gameDetails.thumbnail" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{gameDetails.title}}</h5>
+    <p class="card-text">{{gameDetails.short_description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Genre: {{gameDetails.genre}}</li>
+    <li class="list-group-item">Platform: {{gameDetails.platform}}</li>
+    <li class="list-group-item">Date Released: {{gameDetails.release_date}}</li>
+     <li class="list-group-item"> <a [href]= "gameDetails.freetogame_profile_url" class="card-link">Game Profile</a> </li>
+  </ul>
+  <div class="card-body">
+    <a [href]= "gameDetails.game_url" class="card-link">Download game</a>
+    <a href="http://localhost:3000/games/{{gameDetails.id}}" class="card-link">Add To favourite</a>
+  </div>
+</article> -->
+<img [src]="gameDetails.thumbnail" alt="...">
+<h2> {{gameDetails.title}} </h2>
+<p >{{gameDetails.description}}</p>
+<ul>
+  <li>Genre: {{gameDetails.genre}}</li>
+  <li>Platform: {{gameDetails.platform}}</li>
+  <li>Date Released: {{gameDetails.release_date}}</li>
+  <li class="list-group-item"> <a [href]= "gameDetails.freetogame_profile_url" class="card-link btn btn-primary">Game Profile</a> </li>
+</ul>
+<a [href]= "gameDetails.game_url" class="card-link btn btn-success">Download game</a>
+<a href="http://localhost:3000/games/{{gameDetails.id}}" class="card-link btn btn-primary">Add To favourite</a>

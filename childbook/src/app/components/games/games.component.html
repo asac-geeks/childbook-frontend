@@ -1,0 +1,38 @@
+<p>Games List</p>
+<nav>
+   <h2>  Our Website Games</h2>
+  <ul>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/2ndGame/index.html" target="_blank"> 2nd Game</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/3rdGame/index.html" target="_blank"> 3rd Game</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/4rthGame/index.html" target="_blank">4rthGame</a>
+    </li>
+
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/5thgame/index.html" target="_blank"> 5thgame</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/6ndGame/index.html" target="_blank"> 6ndGame</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/Frogger/index.html" target="_blank"> Frogger</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/Nokia3310-Snake/index.html" target="_blank"> Nokia3310-Snake</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/Tetris/index.html" target="_blank"> Tetris</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/connect-four/index.html" target="_blank"> connect-four</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/firstGame/index.html" target="_blank"> firstGame</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/memory-game/index.html" target="_blank"> memory-game</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/minesweeper/index.html" target="_blank"> minesweeper</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/space-invaders/index.html" target="_blank"> space-invaders</a>
+    </li>
+    <li>  <a href="https://asac-geeks.github.io/childbook-frontend/Games/whac-a-mole/index.html" target="_blank"> whac-a-mole</a>
+    </li>
+  </ul>
+
+</nav>
+<app-search-category-games (category)="searchedCategory($event)"></app-search-category-games>
+<app-game-item *ngFor="let item of itemsList" [item]="item"></app-game-item>

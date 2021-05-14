@@ -1,0 +1,17 @@
+<article class="card" style="width: 18rem;">
+  <img [src]="item.thumbnail" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{item.title}}</h5>
+    <p class="card-text">{{item.short_description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Genre: {{item.genre}}</li>
+    <li class="list-group-item">Platform: {{item.platform}}</li>
+    <li class="list-group-item">Date Released: {{item.release_date}}</li>
+  </ul>
+  <div class="card-body">
+    <a [href]= "item.freetogame_profile_url" class="card-link">Game Profile</a>
+    <a routerLink="/games/gameDetails/{{item.id}}">Game Details </a>
+    <!-- <a href="http://localhost:3000/games/{{item.id}}" class="card-link">Game Details</a> -->
+  </div>
+</article>
