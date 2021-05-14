@@ -12,6 +12,15 @@ import {GamesComponent}from './components/games/games.component';
 import { SearchCategoryGamesComponent } from './components/search-category-games/search-category-games.component';
 import { GameDetailComponent } from './components/game-detail/game-detail.component';
 import {FormsModule} from "@angular/forms";
+import { ParentDetailsComponent } from './components/parent-details/parent-details.component';
+import { ParentMapComponent } from './components/parent-map/parent-map.component';
+import { ParentEditComponent } from './components/parent-edit/parent-edit.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { ParentLoginComponent } from './components/parent-login/parent-login.component';
+import { VerificationComponent } from './components/verification/verification.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +31,13 @@ import {FormsModule} from "@angular/forms";
     GameItemComponent,
     SearchCategoryGamesComponent,
     GameDetailComponent
+    ParentDetailsComponent,
+    ParentMapComponent,
+    ParentEditComponent,
+     SignupComponent,
+    LoginComponent,
+    ParentLoginComponent,
+    VerificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +45,9 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

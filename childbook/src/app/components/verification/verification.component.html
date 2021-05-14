@@ -1,0 +1,6 @@
+<p>Parent verification Page</p>
+<form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+    <input type="text" name="parentEmail" placeholder="Parent Email" ngModel>
+    <input type="text" name="serialNumber" placeholder="serialNumber" ngModel>
+    <button type="submit">Verificate</button>
+</form>

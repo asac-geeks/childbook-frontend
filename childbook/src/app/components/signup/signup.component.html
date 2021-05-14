@@ -1,0 +1,8 @@
+<p>signup Page</p>
+<form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+    <input type="text" name="userName" placeholder="username" ngModel>
+    <input type="text" name="parentEmail" placeholder="email" ngModel>
+    <input type="date" name="dateOfBirth" placeholder="date" ngModel>
+    <input type="text" name="password" placeholder="password" ngModel>
+    <button type="submit">Signup</button>
+</form>
